@@ -1,2 +1,2 @@
 # CircleImageView
-a circle imageview widget in Android
+A circle imageview widget for Android
