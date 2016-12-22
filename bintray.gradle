@@ -1,0 +1,97 @@
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
+
+group = PROJ_GROUP
+version = PROJ_VERSION
+project.archivesBaseName = PROJ_ARTIFACTID
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += configurations.compile
+    classpath += configurations.provided
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+javadoc {
+    options{
+        encoding "UTF-8"
+        charSet 'UTF-8'
+        author true
+        version true
+        links "http://docs.oracle.com/javase/7/docs/api"
+        title PROJ_NAME
+    }
+}
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
+install {
+    repositories.mavenInstaller {
+        pom.project {
+            name PROJ_DESCRIPTION
+            description PROJ_DESCRIPTION
+            url PROJ_WEBSITEURL
+            packaging 'aar'
+            groupId PROJ_GROUP
+            artifactId PROJ_ARTIFACTID
+            version PROJ_VERSION
+            licenses {
+                license {
+                    name 'The Apache Software License, Version 2.0'
+                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                }
+            }
+            scm {
+                connection PROJ_VCSURL
+                url PROJ_WEBSITEURL
+            }
+            developers {
+                developer {
+                    id DEVELOPER_ID
+                    name DEVELOPER_NAME
+                    email DEVELOPER_EMAIL
+                }
+            }
+        }
+    }
+}
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+    configurations = ['archives']
+    pkg {
+        userOrg = PROJ_ORG
+        repo = PROJ_REPO
+        name = PROJ_NAME
+        licenses = ['Apache-2.0']
+        vcsUrl = PROJ_VCSURL
+        websiteUrl = PROJ_WEBSITEURL
+        publicDownloadNumbers = true
+        publish = true
+
+//        同步到mavenCenter
+//        version {
+//            gpg {
+//                sign = true
+//                passphrase = properties.getProperty("bintray.gpg.password")
+//            }
+//            mavenCentralSync {
+//                sync = true
+//                user = properties.getProperty("bintray.oss.user")
+//                password = properties.getProperty("bintray.oss.password")
+//                close = '1'
+//            }
+//        }
+    }
+}

@@ -123,18 +123,10 @@ public class CircleImageView extends ImageView {
         refreshConfig();
     }
 
-    /**
-     * 获取边色
-     * @return
-     */
     public int getBorderColor() {
         return mBorderColor;
     }
 
-    /**
-     * 设置边色
-     * @param borderColor
-     */
     public void setBorderColor(@ColorInt int borderColor) {
         if (borderColor != mBorderColor) {
             mBorderColor = borderColor;
@@ -143,18 +135,10 @@ public class CircleImageView extends ImageView {
         }
     }
 
-    /**
-     * 获取边宽
-     * @return
-     */
     public int getBorderWidth() {
         return mBorderWidth;
     }
 
-    /**
-     * 设置边宽
-     * @param borderWidth
-     */
     public void setBorderWidth(int borderWidth) {
         if (borderWidth != mBorderWidth) {
             mBorderWidth = borderWidth;
@@ -162,10 +146,6 @@ public class CircleImageView extends ImageView {
         }
     }
 
-    /**
-     * 是否是覆盖型边框
-     * @return
-     */
     public boolean isBorderOverlay() {
         return mBorderOverlay;
     }

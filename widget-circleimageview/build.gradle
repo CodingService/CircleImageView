@@ -8,10 +8,12 @@ android {
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
-        versionName "1.0.0"
+        versionName PROJ_VERSION
     }
 }
 
 dependencies {
     provided 'com.android.support:support-annotations:25.0.1'
 }
+
+apply from: project.rootDir.absolutePath+File.separator+'bintray.gradle'

@@ -16,10 +16,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mImageLightView = (CircleImageView) findViewById(R.id.image_view_light);
-        mImageLightView.setBorderOverlay(true);
-
         mImageDarkView = (CircleImageView) findViewById(R.id.image_view_dark);
-
 
         ((SeekBar)findViewById(R.id.seek_bar)).setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
