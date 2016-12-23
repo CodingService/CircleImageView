@@ -9,21 +9,14 @@ Android中一款简单高效的圆形图片组件
 
 ## Usages
 
-maven
-```
-<dependency>
-  <groupId>cn.service.coding</groupId>
-  <artifactId>widget-circleimageview</artifactId>
-  <version>1.0.0</version>
-  <type>pom</type>
-</dependency>
-```
-gradle
+- dependencies
+
 ```
 compile 'cn.service.coding:widget-circleimageview:1.0.0'
 ```
 
-Just use like Imageview
+- Just use like Imageview
+
 ```
 <cn.kerison.coding.widget.CircleImageView
         android:id="@+id/image_view_light"
@@ -35,7 +28,7 @@ Just use like Imageview
         app:civ_border_width="2dp"
         app:civ_border_color="@color/dark"/>
 ```
-or setter
+
 
 ## Preview
 
